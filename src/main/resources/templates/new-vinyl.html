@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Create new vinyl</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Vinyls mgt</h1>
+                    <form action="#" th:action="@{/vinyls}" th:object="${vinyl}" method="post">
+                        <div class="form-group">
+                            <label for="songName" >Song Name</label>
+                            <input type="text" th:value="*{songName}" th:field="*{songName}" class="form-control" id="songName" aria-describedby="songNameHelp" placeholder="Song Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="releaseDate">Release password</label>
+                            <input type="date" th:value="*{releaseDate}" th:field="*{releaseDate}" class="form-control" id="releaseDate" placeholder="Release password">
+                        </div>
+                        <div class="form-group">
+                            <label for="authors">Author</label>
+                            <select class="form-control" th:field="*{author}" id="authors">
+                                <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="users">User</label>
+                            <select class="form-control" th:field="*{user}" id="users">
+                                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.email}"></option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
