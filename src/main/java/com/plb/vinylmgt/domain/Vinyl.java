@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -18,6 +22,7 @@ public class Vinyl implements Serializable {
     @SequenceGenerator(name = "vinylSequenceGenerator", allocationSize = 1)
     private Long id;
 
+    @NotNull(message = "Song name must not be null")
     @Column(name = "song_name", nullable = false)
     private String songName;
 

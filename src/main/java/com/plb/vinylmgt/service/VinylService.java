@@ -16,6 +16,10 @@ public class VinylService {
         this.vinylRepository = vinylRepository;
     }
 
+    public List<Vinyl> getAllVinyls() {
+        return vinylRepository.findAll();
+    }
+
     public List<Vinyl> getVinylsByUser(String email) {
         return vinylRepository.findAllByUserEmail(email);
     }
@@ -26,5 +30,9 @@ public class VinylService {
 
     public Vinyl save(Vinyl vinyl) {
         return vinylRepository.save(vinyl);
+    }
+
+    public void delete(Long id) {
+        vinylRepository.deleteById(id);
     }
 }
