@@ -6,6 +6,7 @@ import com.plb.vinylmgt.domain.Vinyl;
 import com.plb.vinylmgt.repository.AuthorRepository;
 import com.plb.vinylmgt.repository.UserRepository;
 import com.plb.vinylmgt.repository.VinylRepository;
+import com.plb.vinylmgt.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,12 +28,13 @@ public class VinylmgtApplication {
     }
 
     @Bean
-    public CommandLineRunner createData(UserRepository userRepository,
+    public CommandLineRunner createData(UserService userService,
                                         VinylRepository vinylRepository,
                                         AuthorRepository authorRepository) {
         return args -> {
-            User newUser = new User("toto@toto.com", "azerty", "toto", "titi");
-            userRepository.save(newUser);
+            User newUser = new User("toto@toto.com", "azerty",
+                    "toto", "titi","ADMIN");
+            userService.save(newUser);
 
             Author linkinPark = new Author("Linkin Park", LocalDate.of(1996, 1, 1));
             authorRepository.save(linkinPark);
@@ -47,7 +49,6 @@ public class VinylmgtApplication {
             vinylRepository.save(oneStepCloser);
             vinylRepository.save(pointsOfAuthority);
             vinylRepository.findAll().forEach(System.out::println);
-            userRepository.findAll().forEach(System.out::println);
             authorRepository.findAll().forEach(System.out::println);
         };
     }
