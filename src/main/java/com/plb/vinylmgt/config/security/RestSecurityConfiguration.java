@@ -40,6 +40,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .mvcMatcher("/api/**")
                 .authorizeRequests()
+                .antMatchers("/api/monitoring/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()

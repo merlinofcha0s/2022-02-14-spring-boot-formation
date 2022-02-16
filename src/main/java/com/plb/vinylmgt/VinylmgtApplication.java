@@ -28,7 +28,7 @@ public class VinylmgtApplication {
                                         AuthorRepository authorRepository) {
         return args -> {
             User newUser = new User("toto@toto.com", "azerty",
-                    "toto", "titi","USER");
+                    "toto", "titi","ADMIN");
             userService.save(newUser);
 //
 //            Author linkinPark = new Author("Linkin Park", LocalDate.of(1996, 1, 1));
