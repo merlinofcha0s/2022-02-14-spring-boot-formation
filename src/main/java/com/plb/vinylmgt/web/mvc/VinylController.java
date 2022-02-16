@@ -5,6 +5,7 @@ import com.plb.vinylmgt.domain.Vinyl;
 import com.plb.vinylmgt.service.AuthorService;
 import com.plb.vinylmgt.service.UserService;
 import com.plb.vinylmgt.service.VinylService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class VinylController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String vinyls(Model model) {
         List<Vinyl> vinylsByUser = vinylService.getVinylsByUser("toto@toto.com");
         model.addAttribute("vinyls", vinylsByUser);

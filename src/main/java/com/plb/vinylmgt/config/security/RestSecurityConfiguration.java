@@ -5,6 +5,7 @@ import com.plb.vinylmgt.config.security.filter.JWTAuthorizationFilter;
 import com.plb.vinylmgt.config.security.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -17,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@Order(1)
 public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     public static final String SECRET = "SecretKeyToGenJWTs";
@@ -53,6 +55,6 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(13);
     }
 }
