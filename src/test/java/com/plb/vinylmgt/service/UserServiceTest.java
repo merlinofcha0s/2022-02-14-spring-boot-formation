@@ -1,5 +1,6 @@
 package com.plb.vinylmgt.service;
 
+import com.plb.vinylmgt.DBCleaner;
 import com.plb.vinylmgt.VinylmgtApplication;
 import com.plb.vinylmgt.domain.User;
 import com.plb.vinylmgt.repository.UserRepository;
@@ -38,6 +39,9 @@ public class UserServiceTest {
     private UserRepository userRepositoryMock;
 
     @Autowired
+    private DBCleaner dbCleaner;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     private User user;
@@ -56,6 +60,7 @@ public class UserServiceTest {
     public void init() {
         user = createEntity();
         userServiceWithMockedRepository = new UserService(userRepositoryMock, passwordEncoder);
+        dbCleaner.clearAllTables();
     }
 
     @Test
@@ -81,7 +86,7 @@ public class UserServiceTest {
         List<User> allUser = userServiceWithMockedRepository.getAllUser();
 
         Assertions.assertThat(allUser).isNotEmpty();
-        Assertions.assertThat(allUser.size()).isEqualTo(1);
+        Assertions.assertThat(allUser.size()).isEqualTo(2);
         Assertions.assertThat(allUser).contains(user1, user);
     }
 
