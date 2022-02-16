@@ -1,10 +1,6 @@
 package com.plb.vinylmgt;
 
-import com.plb.vinylmgt.domain.Author;
-import com.plb.vinylmgt.domain.User;
-import com.plb.vinylmgt.domain.Vinyl;
 import com.plb.vinylmgt.repository.AuthorRepository;
-import com.plb.vinylmgt.repository.UserRepository;
 import com.plb.vinylmgt.repository.VinylRepository;
 import com.plb.vinylmgt.service.UserService;
 import org.springframework.boot.CommandLineRunner;
@@ -13,8 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.StandardEnvironment;
-
-import java.time.LocalDate;
 
 @SpringBootApplication
 public class VinylmgtApplication {
@@ -32,24 +26,24 @@ public class VinylmgtApplication {
                                         VinylRepository vinylRepository,
                                         AuthorRepository authorRepository) {
         return args -> {
-            User newUser = new User("toto@toto.com", "azerty",
-                    "toto", "titi","USER");
-            userService.save(newUser);
-
-            Author linkinPark = new Author("Linkin Park", LocalDate.of(1996, 1, 1));
-            authorRepository.save(linkinPark);
-
-            Vinyl inTheEnd = new Vinyl("In the end", LocalDate.of(2000, 10, 24), linkinPark, newUser);
-            Vinyl papercut = new Vinyl("Papercut", LocalDate.of(2000, 10, 24), linkinPark, newUser);
-            Vinyl oneStepCloser = new Vinyl("One step closer", LocalDate.of(2000, 10, 24), linkinPark, newUser);
-            Vinyl pointsOfAuthority = new Vinyl("Points of Authority", LocalDate.of(2000, 10, 24), linkinPark, newUser);
-
-            vinylRepository.save(inTheEnd);
-            vinylRepository.save(papercut);
-            vinylRepository.save(oneStepCloser);
-            vinylRepository.save(pointsOfAuthority);
-            vinylRepository.findAll().forEach(System.out::println);
-            authorRepository.findAll().forEach(System.out::println);
+//            User newUser = new User("toto@toto.com", "azerty",
+//                    "toto", "titi","USER");
+//            userService.save(newUser);
+//
+//            Author linkinPark = new Author("Linkin Park", LocalDate.of(1996, 1, 1));
+//            authorRepository.save(linkinPark);
+//
+//            Vinyl inTheEnd = new Vinyl("In the end", LocalDate.of(2000, 10, 24), linkinPark, newUser);
+//            Vinyl papercut = new Vinyl("Papercut", LocalDate.of(2000, 10, 24), linkinPark, newUser);
+//            Vinyl oneStepCloser = new Vinyl("One step closer", LocalDate.of(2000, 10, 24), linkinPark, newUser);
+//            Vinyl pointsOfAuthority = new Vinyl("Points of Authority", LocalDate.of(2000, 10, 24), linkinPark, newUser);
+//
+//            vinylRepository.save(inTheEnd);
+//            vinylRepository.save(papercut);
+//            vinylRepository.save(oneStepCloser);
+//            vinylRepository.save(pointsOfAuthority);
+//            vinylRepository.findAll().forEach(System.out::println);
+//            authorRepository.findAll().forEach(System.out::println);
         };
     }
 }
