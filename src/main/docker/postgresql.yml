@@ -1,0 +1,12 @@
+version: '2'
+services:
+  vinylmgt-postgresql:
+    image: postgres:12.4
+    volumes:
+       - ~/volumes/vinylmgt/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=azerty
+      - POSTGRES_DB=vinylmgt
+    ports:
+      - "5432:5432"

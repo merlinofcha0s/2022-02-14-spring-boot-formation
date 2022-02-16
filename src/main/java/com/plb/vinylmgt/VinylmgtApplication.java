@@ -1,5 +1,6 @@
 package com.plb.vinylmgt;
 
+import com.plb.vinylmgt.domain.User;
 import com.plb.vinylmgt.repository.AuthorRepository;
 import com.plb.vinylmgt.repository.VinylRepository;
 import com.plb.vinylmgt.service.UserService;
@@ -26,9 +27,9 @@ public class VinylmgtApplication {
                                         VinylRepository vinylRepository,
                                         AuthorRepository authorRepository) {
         return args -> {
-//            User newUser = new User("toto@toto.com", "azerty",
-//                    "toto", "titi","USER");
-//            userService.save(newUser);
+            User newUser = new User("toto@toto.com", "azerty",
+                    "toto", "titi","USER");
+            userService.save(newUser);
 //
 //            Author linkinPark = new Author("Linkin Park", LocalDate.of(1996, 1, 1));
 //            authorRepository.save(linkinPark);
